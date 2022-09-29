@@ -8,27 +8,27 @@ function Header() {
         <NavMenu id="menu">
             <a href="#menu">
                 <img alt="home icon" src="/images/home-icon.svg"></img>
-                <span>HOME</span>
+                <span>INÍCIO</span>
             </a>
             <a href="#menu">
                 <img alt="search icon" src="/images/search-icon.svg"></img>
-                <span>SEARCH</span>
+                <span>PESQUISA</span>
             </a>
             <a href="#menu">
                 <img alt="watchlist icon" src="/images/watchlist-icon.svg"></img>
-                <span>WATCHLIST</span>
+                <span>MINHA LISTA</span>
             </a>
             <a href="#menu">
                 <img alt="original icon" src="/images/original-icon.svg"></img>
-                <span>ORIGINALS</span>
+                <span>ORIGINAIS</span>
             </a>
             <a href="#menu">
                 <img alt="movie icon" src="/images/movie-icon.svg"></img>
-                <span>MOVIES</span>
+                <span>FILMES</span>
             </a>
             <a href="#menu">
                 <img alt="series icon" src="/images/series-icon.svg"></img>
-                <span>SERIES</span>
+                <span>SÉRIES</span>
             </a>
         </NavMenu>
         <UserImg src="/images/user-image.png"/>
@@ -55,9 +55,10 @@ const Logo = styled.img`
 const NavMenu = styled.div`
     display: flex;
     flex: 1;
-    margin-left: 20px;
+    margin-left: 40px;
     align-items: center;
     a {
+        margin-left: 15px;
         display: flex;
         align-items: center;
         padding: 0 12px;
@@ -68,7 +69,9 @@ const NavMenu = styled.div`
         }
 
         span {
+            margin-left: 10px;
             font-size: 13px;
+            font-weight: bold;
             letter-spacing: 1.42px;
             position: relative;
             &:after {
