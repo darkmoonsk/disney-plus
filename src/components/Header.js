@@ -6,7 +6,7 @@ function Header() {
     <Nav>
         <Logo src="/images/logo.svg" />
         <NavMenu id="menu">
-            <a href="#menu">
+            <a href="/">
                 <img alt="home icon" src="/images/home-icon.svg"></img>
                 <span>INÍCIO</span>
             </a>

@@ -1,26 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { selectMovies } from  "../features/movie/movieSlice"
+import { useSelector } from "react-redux"
 
 function Movies() {
+    const movies = useSelector(selectMovies);
+
+    console.log("Estes são os filmes", movies);
+    
+
+    
+
   return (
     <Container>
         <h4>Recomendado para Você</h4>
         <Content>
-            <Wrap>
-                <img alt="movie image1" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/C6279C832AB2F12CE97942F61FE09992B71CBA13A3CA61243E8C5C09B31F719F/scale?width=400&aspectRatio=1.78&format=jpeg"/>
-            </Wrap>
-            <Wrap>
-                <img alt="movie image2" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/C6279C832AB2F12CE97942F61FE09992B71CBA13A3CA61243E8C5C09B31F719F/scale?width=400&aspectRatio=1.78&format=jpeg"/>
-            </Wrap>
-            <Wrap>
-                <img alt="movie image3" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/C6279C832AB2F12CE97942F61FE09992B71CBA13A3CA61243E8C5C09B31F719F/scale?width=400&aspectRatio=1.78&format=jpeg"/>
-            </Wrap>
-            <Wrap>
-                <img alt="movie image4" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/C6279C832AB2F12CE97942F61FE09992B71CBA13A3CA61243E8C5C09B31F719F/scale?width=400&aspectRatio=1.78&format=jpeg"/>
-            </Wrap>
-            <Wrap>
-                <img alt="movie image5" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/C6279C832AB2F12CE97942F61FE09992B71CBA13A3CA61243E8C5C09B31F719F/scale?width=400&aspectRatio=1.78&format=jpeg"/>
-            </Wrap>
+            {movies && 
+               movies.map((movie, index )=> (
+                    <Wrap key={movie.id}>
+                        <Link to={`/detail/${movie.id}`}>
+                            <img alt={movie.name} src={movie.card}/>
+                        </Link>                   
+                    </Wrap>
+               ))     
+            }
         </Content>
     </Container>
   )
@@ -33,6 +37,7 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
+    margin-bottom: 45px;
     display: grid;
     grid-gap: 25px;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -56,7 +61,7 @@ const Wrap = styled.div`
     &:hover {
         box-shadow: rgb(0 0 0 / 80%) 0 40px 58px -16px, 
         rgb(0 0 0 / 72%) 0px 30px 22px -10px;
-        transform: scale(1.10);
+        transform: scale(1.05);
         border-color: rgba(249, 249, 249, 0.8);
     }
 `

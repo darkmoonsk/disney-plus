@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams} from "react-router-dom"
+import { doc, getDoc } from "firebase/firestore"
+import db from '../firebase'
 
 function Detail() {
+    const [movie, setMovie] = useState();
+
+    const { id } = useParams();
+    const docRef = doc(db, "movies", id);
+
+    useEffect(() => {
+      //Pegando os dados do filme no banco de dados
+        getDoc(docRef).then((doc) => {
+            setMovie(doc.data());
+        })
+    }, [docRef])
+
+
+    console.log(movie);
+
   return (
     <Container>
         <Background>
-            <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/8D1D0ADD6E7BD8B119F7EA30FE6662AD5C98FE12B096542023F59420AD5AEDE3/scale?width=1440&aspectRatio=1.78&format=jpeg" />
+            <img alt="background" src={movie?.background} />
         </Background>
         <ImgTitle>
-            <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/8A23DE0029509C77D4D35B94E47182316D7EF6DF63982B0DEAA88B772D645B16/scale?width=1440&aspectRatio=1.78&format=png" />
+            <img alt="Title" src={movie?.logo} />
         </ImgTitle>
         <Controls>
             <PlayButton>
@@ -27,10 +45,10 @@ function Detail() {
             </GroupWatchButton>
         </Controls>
         <SubTitle>
-            2016 • 2h 13min - Ficção científica, Ação e aventura
+            {movie?.subtitle}
         </SubTitle>
         <Description>
-        "Em uma época de conflito, um grupo de heróis improváveis se une em uma missão para roubar os planos da Estrela da Morte, a maior arma de destruição do Império."
+            {movie?.description}
         </Description>
     </Container>
   )
@@ -48,7 +66,7 @@ const Background = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
+    bottom: 70;
     right: 0;
     z-index: -1;
     opacity: 0.8;
@@ -63,15 +81,15 @@ const Background = styled.div`
 const ImgTitle = styled.div`
     height: 30vh;
     min-height: 170px;
-    width: 35vw;
+    width: 18vw;
     min-width: 200px;
-    ${'' /* background-color: rgb(255, 255, 255); */}
 
     img {
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
+
 `
 
 const Controls = styled.div`

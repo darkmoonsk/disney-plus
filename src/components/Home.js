@@ -1,10 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import ImgSlider from './ImgSlider'
-import Movies from './Movies'
-import Viewers from './Viewers'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import ImgSlider from './ImgSlider';
+import Movies from './Movies';
+import Viewers from './Viewers';
+import db from '../firebase';
+import { collection, query, onSnapshot } from "firebase/firestore";
+import { useDispatch } from 'react-redux';
+import { setMovies } from '../features/movie/movieSlice';
 
 function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const myQuery = query(collection(db, "movies"));
+    onSnapshot(myQuery, (snapshot) => {
+      let tempMovies = snapshot.docs.map(doc => {
+        return { id: doc.id, ...doc.data() }
+      })
+      dispatch(setMovies(tempMovies));
+    })
+  }, [dispatch]);
+
   return (
     <Container>
       <ImgSlider />
@@ -18,7 +34,7 @@ export default Home
 
 const Container = styled.main`
     min-height: calc(100vh - 70px);
-    padding: 0 calc(3.5vw + 5px);
+    padding: 0 calc(6.5vw + 5px);
     position: relative;
     overflow-x: hidden;
     &:before {

@@ -7,9 +7,9 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 import ErrorPage from './ErrorPage';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -18,8 +18,9 @@ function App() {
         <Header/>
         <Routes>
           <Route path="*" element={<ErrorPage/>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail />} />
 
         </Routes>
       </BrowserRouter>
