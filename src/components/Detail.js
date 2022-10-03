@@ -7,20 +7,18 @@ import db from '../firebase'
 function Detail() {
     const [movie, setMovie] = useState();
 
+
     const { id } = useParams();
     const docRef = doc(db, "movies", id);
 
     useEffect(() => {
       //Pegando os dados do filme no banco de dados
         getDoc(docRef).then((doc) => {
-            setMovie(doc.data());
+            setMovie(doc.data());           
         })
     }, [docRef])
 
-
-    console.log(movie);
-
-  return (
+  return ( 
     <Container>
         <Background>
             <img alt="background" src={movie?.background} />
@@ -50,7 +48,7 @@ function Detail() {
         <Description>
             {movie?.description}
         </Description>
-    </Container>
+    </Container>  
   )
 }
 
