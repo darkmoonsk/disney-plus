@@ -7,7 +7,7 @@ function Login() {
         <ContentBox>
             <CTA>
                 <CTALogoOne src="/images/cta-logo-one.svg" />
-                <SignUp>GET ALL THERE</SignUp>
+                <SignUp>ASSINE JÁ</SignUp>
                 <Description>
                     Get Premier Access to Raya and the Last Dragon for 
                     an additional fee with a Disney+ subscription. 
