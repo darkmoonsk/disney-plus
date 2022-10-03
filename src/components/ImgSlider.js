@@ -17,11 +17,33 @@ function ImgSlider() {
   return (
     <Carousel {...settings}>
         <Wrap>
+            <img alt="slider" src="/images/slider-thor.png" />
+        </Wrap>
+        <Wrap>
             <img alt="slider" src="/images/slider-badging.jpg" />
+        </Wrap>
+        <Wrap>
+            <img alt="slider" src="/images/slider-shehulk.png" />
+        </Wrap>
+        <Wrap>
+            <img alt="slider" src="/images/slider-aranhaverso.png" />
         </Wrap>
         <Wrap>
             <img alt="slider" src="/images/slider-badag.jpg" />
         </Wrap>
+        <Wrap>
+            <img alt="slider" src="/images/slider-pinoquio.png" />
+        </Wrap>
+        <Wrap>
+            <img alt="slider" src="/images/slider-andor.png" />
+        </Wrap>
+        <Wrap>
+            <img alt="slider" src="/images/slider-maravilhas.png" />
+        </Wrap>
+        <Wrap>
+            <img alt="slider" src="/images/slider-scale.jpg" />
+        </Wrap>
+
     </Carousel>
   )
 }
