@@ -5,7 +5,7 @@
 ## Visão Geral
 Este projeto é um esforço para recriar uma pequena parte do front-end do serviço de streaming Disney Plus. Demonstra as minhas capacidades de uso de algumas tecnologias web modernas, incluindo React, Styled Components e Redux.
 
-**Acesse em: ** https://disneyplus.brunosouzadev.com/
+**Acesse em:** https://disneyplus.brunosouzadev.com/
 
 ### Tecnologias
 - **React**: Utiliza React para construir uma interface de usuário dinâmica e responsiva.
